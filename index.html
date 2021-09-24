@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+    <title>Binary Calculator</title>
+</head>
+<body>
+    <section id="sec">
+        <h1>Binary Calculator</h1>
+        <h3>Num1:</h3>
+        <textarea id="num1" oninput="value=value.replace(/[^\d]/g,'')"></textarea>
+        <br>
+        <h3>Num2:</h3>
+        <textarea id="num2" oninput="value=value.replace(/[^\d]/g,'')"></textarea>
+        <br><br><br>
+        <button id="cal" onclick="Calculate();">Calculate</button>
+        <br><br>
+        <h3>Output:</h3>
+        <textarea readonly id="output" wrap="hard"></textarea>
+    </section>
+</body>
+
+<script>
+    var num1 = 0;
+    var num2 = 0;
+    var num1bin = 0;
+    var num2bin = 0;
+    var ans = 0;
+    var ansbin = 0;
+    var outputArea;
+
+    function Calculate() {
+        num1 = document.getElementById("num1").value;
+        num2 = document.getElementById("num2").value;
+        outputArea = document.getElementById("output");
+        num1bin = parseInt(num1, 10).toString(2);
+        num2bin = parseInt(num2, 10).toString(2);
+        ansbin = (parseInt(num1bin, 2) + parseInt(num2bin, 2)).toString(2);
+        ans = parseInt(ansbin, 2).toString(10);
+        outputArea.innerHTML = 
+        "num1 = " + num1 + "(10) = " + num1bin + "(2)" +
+        "\nnum2 = " + num2 + "(10) = " + num2bin + "(2)" +
+        "\nAnswer = " + num1bin + "(2) + " + num2bin + "(2) = " + ansbin + "(2) = " + ans + "(10)";
+    }
+</script>
+
+<style>
+    #output {
+        width: 600px;
+        height: 100px;
+    }
+
+    body {
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    #sec {
+        margin-left: 60px;
+        margin-top: 50px;
+    }
+
+    #cal {
+        width: 90px;
+        height: 40px;
+        font-family: 'Courier New', Courier, monospace;
+        border-radius: 10px;
+    }
+</style>
